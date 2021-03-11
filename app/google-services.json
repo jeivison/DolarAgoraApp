@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "830173469891",
+    "project_id": "dolar-agora-f9606",
+    "storage_bucket": "dolar-agora-f9606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830173469891:android:979f006a5743c2d2fcd676",
+        "android_client_info": {
+          "package_name": "com.example.dolarhoje"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830173469891-12vpjcca7e7j46apfahlcu2rn4pqoabk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dolarhoje",
+            "certificate_hash": "329d83682e1fda9457ba8de9576e8941df3d1d71"
+          }
+        },
+        {
+          "client_id": "830173469891-gjaj75vjhsbfbkgpca9dln7qvtuuflc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKB1TzHad5v3xOd_jkvgECslQEsDXsxd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830173469891-gjaj75vjhsbfbkgpca9dln7qvtuuflc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
