@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.dolarhoje.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +23,7 @@ import java.net.URL;
 
 public class TelaDolar extends AppCompatActivity {
 
-    private EditText editUsd;
+    private TextView editUsd;
     private Button buttonConverter;
 
 
@@ -87,7 +91,25 @@ public class TelaDolar extends AppCompatActivity {
         @Override
         protected void onPostExecute(String resultado) {
             super.onPostExecute(resultado);
-            editUsd.setText(resultado);
+
+            String objetoValor = null;
+            String valorMoeda = null;
+            String simbolo = null;
+
+            try {
+                JSONObject jsonObject = new JSONObject(resultado);
+                objetoValor = jsonObject.getString("USD");
+
+                JSONObject jsonObjectReal = new JSONObject(objetoValor);
+                valorMoeda = jsonObjectReal.getString("high");
+                simbolo = jsonObjectReal.getString("code");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            //editUsd.setText(mCode);
+            editUsd.setText(simbolo+" "+valorMoeda);
         }
     }
 }
