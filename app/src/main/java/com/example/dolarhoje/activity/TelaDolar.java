@@ -23,8 +23,9 @@ import java.net.URL;
 
 public class TelaDolar extends AppCompatActivity {
 
-    private TextView editUsd;
+    private TextView editUsd, textDate;
     private Button buttonConverter;
+
 
 
     @Override
@@ -33,9 +34,14 @@ public class TelaDolar extends AppCompatActivity {
         setContentView(R.layout.activity_tela_dolar);
 
         editUsd = findViewById(R.id.editUsd);
-        buttonConverter = findViewById(R.id.buttonConverter);
+        textDate = findViewById(R.id.textDate);
 
 
+        MyTask task = new MyTask();
+        String urlApi = "https://economia.awesomeapi.com.br/all/USD-BRL";
+        task.execute(urlApi);
+
+/*
         buttonConverter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,9 +49,21 @@ public class TelaDolar extends AppCompatActivity {
                 String urlApi = "https://economia.awesomeapi.com.br/all/USD-BRL";
                 task.execute(urlApi);
             }
-        });
+        });*/
 
     }
+
+    private void carregarTexto(String texto){
+        TextView text = (TextView)findViewById(R.id.editUsd);
+        text.setText(texto);
+
+    }
+
+    private void carregarData(String date){
+        TextView tDate = (TextView)findViewById(R.id.textDate);
+        tDate.setText(date);
+    }
+
 
     class MyTask extends AsyncTask<String, Void, String>{
 
@@ -95,21 +113,27 @@ public class TelaDolar extends AppCompatActivity {
             String objetoValor = null;
             String valorMoeda = null;
             String simbolo = null;
+            String date = null;
 
             try {
                 JSONObject jsonObject = new JSONObject(resultado);
                 objetoValor = jsonObject.getString("USD");
 
                 JSONObject jsonObjectReal = new JSONObject(objetoValor);
-                valorMoeda = jsonObjectReal.getString("high");
-                simbolo = jsonObjectReal.getString("code");
+                valorMoeda = jsonObjectReal.getString("low");
+                simbolo = jsonObjectReal.getString("codein");
+                date = jsonObjectReal.getString("create_date");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
 
             //editUsd.setText(mCode);
-            editUsd.setText(simbolo+" "+valorMoeda);
+            //editUsd.setText(simbolo+" "+valorMoeda);
+            //textDate.setText("Última atualização: " + date);
+            carregarTexto(simbolo + valorMoeda);
+            carregarData("Última atualização: " + date);
+
         }
     }
 }

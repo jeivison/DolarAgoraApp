@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dolarhoje">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DolarHoje">
+        <activity android:name=".activity.TelaConversor"></activity>
         <activity android:name=".activity.TelaDolar" />
         <activity android:name=".activity.TelaLogin" />
         <activity android:name=".activity.TelaCadastro" />
