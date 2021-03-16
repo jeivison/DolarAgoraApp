@@ -1,5 +1,6 @@
 package com.example.dolarhoje.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 public class TelaDolar extends AppCompatActivity {
 
@@ -111,17 +113,19 @@ public class TelaDolar extends AppCompatActivity {
             super.onPostExecute(resultado);
 
             String objetoValor = null;
-            String valorMoeda = null;
-            String simbolo = null;
+            Double valorMoeda = null;
+            //String simbolo = null;
             String date = null;
+
+            DecimalFormat formatD = new DecimalFormat("#.##");
 
             try {
                 JSONObject jsonObject = new JSONObject(resultado);
                 objetoValor = jsonObject.getString("USD");
 
                 JSONObject jsonObjectReal = new JSONObject(objetoValor);
-                valorMoeda = jsonObjectReal.getString("low");
-                simbolo = jsonObjectReal.getString("codein");
+                valorMoeda = jsonObjectReal.getDouble("low");
+                //simbolo = jsonObjectReal.getString("codein");
                 date = jsonObjectReal.getString("create_date");
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -131,9 +135,13 @@ public class TelaDolar extends AppCompatActivity {
             //editUsd.setText(mCode);
             //editUsd.setText(simbolo+" "+valorMoeda);
             //textDate.setText("Última atualização: " + date);
-            carregarTexto(simbolo + valorMoeda);
+            carregarTexto("R$" + " " + formatD.format(valorMoeda));
             carregarData("Última atualização: " + date);
 
         }
+    }
+
+    public void btConversor(View view){
+        startActivity(new Intent(this, TelaConversor.class));
     }
 }

@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -70,6 +70,7 @@
         android:layout_marginRight="8dp"
         android:drawableLeft="@drawable/ic_compare_24"
         android:gravity="center"
+        android:onClick="btConversor"
         android:text=" Conversor"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -92,7 +93,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewC" />
 
     <ImageView
         android:id="@+id/imageView5"
