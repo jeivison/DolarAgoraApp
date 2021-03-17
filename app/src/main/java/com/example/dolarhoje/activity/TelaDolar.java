@@ -55,10 +55,10 @@ public class TelaDolar extends AppCompatActivity {
 
     }
 
-    private void carregarTexto(String texto){
+
+    public void carregarTexto(String texto){
         TextView text = (TextView)findViewById(R.id.editUsd);
         text.setText(texto);
-
     }
 
     private void carregarData(String date){
