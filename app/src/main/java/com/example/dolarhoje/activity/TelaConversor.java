@@ -3,6 +3,7 @@ package com.example.dolarhoje.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import com.example.dolarhoje.R;
@@ -10,7 +11,9 @@ import com.example.dolarhoje.R;
 public class TelaConversor extends AppCompatActivity {
 
 
-    private EditText editTextDolar, editTextReais;
+    private EditText editTextDolar;
+    private EditText editTextReais;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +26,7 @@ public class TelaConversor extends AppCompatActivity {
 
 
     }
+
+
 
 }

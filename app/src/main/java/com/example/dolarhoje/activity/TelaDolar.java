@@ -30,6 +30,7 @@ public class TelaDolar extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +113,7 @@ public class TelaDolar extends AppCompatActivity {
         protected void onPostExecute(String resultado) {
             super.onPostExecute(resultado);
 
+
             String objetoValor = null;
             Double valorMoeda = null;
             //String simbolo = null;
@@ -124,7 +126,7 @@ public class TelaDolar extends AppCompatActivity {
                 objetoValor = jsonObject.getString("USD");
 
                 JSONObject jsonObjectReal = new JSONObject(objetoValor);
-                valorMoeda = jsonObjectReal.getDouble("low");
+                 valorMoeda = jsonObjectReal.getDouble("low");
                 //simbolo = jsonObjectReal.getString("codein");
                 date = jsonObjectReal.getString("create_date");
             } catch (JSONException e) {
