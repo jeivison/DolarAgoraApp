@@ -23,10 +23,15 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDolar"
-        app:srcCompat="@drawable/ic__swap_24"
-        tools:layout_editor_absoluteX="0dp" />
+        app:srcCompat="@drawable/ic__swap_24" />
 
     <EditText
         android:id="@+id/editTextDolar"
@@ -93,4 +98,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/editTextReais"
         app:layout_constraintEnd_toStartOf="@+id/editTextReais"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextReais" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

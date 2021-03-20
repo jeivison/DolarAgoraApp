@@ -114,10 +114,13 @@ public class TelaDolar extends AppCompatActivity {
             super.onPostExecute(resultado);
 
 
+            DolarValor obj = new DolarValor();
+            Double v = obj.getValorMoeda();
+
             String objetoValor = null;
-            Double valorMoeda = null;
             //String simbolo = null;
             String date = null;
+            //Double valorMoeda = null;
 
             DecimalFormat formatD = new DecimalFormat("#.##");
 
@@ -126,7 +129,7 @@ public class TelaDolar extends AppCompatActivity {
                 objetoValor = jsonObject.getString("USD");
 
                 JSONObject jsonObjectReal = new JSONObject(objetoValor);
-                 valorMoeda = jsonObjectReal.getDouble("low");
+                 v = jsonObjectReal.getDouble("low");
                 //simbolo = jsonObjectReal.getString("codein");
                 date = jsonObjectReal.getString("create_date");
             } catch (JSONException e) {
@@ -137,11 +140,13 @@ public class TelaDolar extends AppCompatActivity {
             //editUsd.setText(mCode);
             //editUsd.setText(simbolo+" "+valorMoeda);
             //textDate.setText("Última atualização: " + date);
-            carregarTexto("R$" + " " + formatD.format(valorMoeda));
+            carregarTexto("R$" + " " + formatD.format(v));
             carregarData("Última atualização: " + date);
 
         }
     }
+
+
 
     public void btConversor(View view){
         startActivity(new Intent(this, TelaConversor.class));
