@@ -28,7 +28,7 @@ public class TelaConversor extends AppCompatActivity {
 
     private EditText editTextDolar, num2, num1;
     private EditText editTextReais;
-    private TextView resultadoD;
+
 
 
 
@@ -41,11 +41,12 @@ public class TelaConversor extends AppCompatActivity {
         editTextReais = findViewById(R.id.editTextReais);
 
 
-        resultadoD = findViewById(R.id.textViewResultado);
+
 
         MyTask task = new TelaConversor.MyTask();
         String urlApi = "https://economia.awesomeapi.com.br/all/USD-BRL";
         task.execute(urlApi);
+
 
         editTextDolar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -56,16 +57,28 @@ public class TelaConversor extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
-
                 String number1 = editTextDolar.getText().toString();
                 Double valorDolla = Double.parseDouble(number1);
                 String number2 = editTextReais.getText().toString();
                 Double valorReais = Double.parseDouble(number2);
 
-                Double resul = valorDolla * valorReais;
+                Double convD = 0.18;
 
-                editTextReais.setText(String.valueOf(resul));
+                //Double resul = valorDolla * valorReais;
+
+                //editTextReais.setText(String.valueOf(resul));
+
+                if (valorDolla == 1){
+                    Double.parseDouble(number2);
+                }if (valorDolla != 1){
+                    Double resul = valorDolla * valorReais;
+                    editTextReais.setText(String.valueOf(resul));
+                }if (valorReais == 1){
+                    editTextDolar.setText(String.valueOf(convD));
+                }if (valorReais != 1){
+                    Double resulR = convD * valorReais;
+                    editTextDolar.setText(String.valueOf(resulR));
+                }
 
             }
 
@@ -76,23 +89,18 @@ public class TelaConversor extends AppCompatActivity {
         });
 
     }
+    
 
+        public void carregarValor(String dollarsV){
+            EditText valorD = (EditText)findViewById(R.id.editTextReais);
+            valorD.setText(dollarsV);
 
-    public void carregarValor(String dolarV){
-        EditText valorD = (EditText)findViewById(R.id.editTextReais);
-       valorD.setText(dolarV);
             /*
-            int number1 = Integer.valueOf(num1.toString());
-            int number2 = Integer.valueOf(num2.getText().toString());
-            int res = number1 * number2;*/
+            String dollarD = String.valueOf(1);
+            EditText numD = (EditText)findViewById(R.id.editTextDolar);
+            numD.setText(dollarD);*/
+        }
 
-        /*
-        String dollarD = String.valueOf(1);
-        EditText numD = (EditText)findViewById(R.id.editTextDolar);
-        numD.setText(dollarD);*/
-
-
-    }
 
     class MyTask extends AsyncTask<String, Void, String> {
 
@@ -139,21 +147,11 @@ public class TelaConversor extends AppCompatActivity {
         protected void onPostExecute(String resultado) {
             super.onPostExecute(resultado);
 
-            /*
-            String number1 = editTextDolar.getText().toString();
-            Double valorDolla = Double.parseDouble(number1);
-            String number2 = editTextReais.getText().toString();
-            Double valorReais = Double.parseDouble(number2);
-
-            Double resul = valorDolla * valorReais;
-
-            resultadoD.setText(String.valueOf(resul));*/
-
-
             String objetoValor = null;
             //String simbolo = null;
             String date = null;
             Double valorMoeda = null;
+
 
             DecimalFormat formatD = new DecimalFormat("#.##");
 
@@ -170,10 +168,9 @@ public class TelaConversor extends AppCompatActivity {
             }
 
 
-            //editUsd.setText(mCode);
-            //editUsd.setText(simbolo+" "+valorMoeda);
-            //textDate.setText("Última atualização: " + date);
-            carregarValor(formatD.format(valorMoeda));
+                carregarValor(formatD.format(valorMoeda));
+
+
             //carregarData("Última atualização: " + date);
 
         }
