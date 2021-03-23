@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dolarhoje.R;
 
@@ -25,12 +25,8 @@ import java.text.DecimalFormat;
 
 public class TelaConversor extends AppCompatActivity {
 
-
     private EditText editTextDolar, num2, num1;
     private EditText editTextReais;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +36,9 @@ public class TelaConversor extends AppCompatActivity {
         editTextDolar = findViewById(R.id.editTextDolar);
         editTextReais = findViewById(R.id.editTextReais);
 
-
-
-
         MyTask task = new TelaConversor.MyTask();
         String urlApi = "https://economia.awesomeapi.com.br/all/USD-BRL";
         task.execute(urlApi);
-
 
         editTextDolar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -63,21 +55,28 @@ public class TelaConversor extends AppCompatActivity {
                 Double valorReais = Double.parseDouble(number2);
 
                 Double convD = 0.18;
+                int valueD = 1;
+                int valueR = 1;
 
                 //Double resul = valorDolla * valorReais;
 
                 //editTextReais.setText(String.valueOf(resul));
 
-                if (valorDolla == 1){
-                    Double.parseDouble(number2);
-                }if (valorDolla != 1){
-                    Double resul = valorDolla * valorReais;
-                    editTextReais.setText(String.valueOf(resul));
-                }if (valorReais == 1){
+                if (valorDolla == valueD){
+                    //Double.parseDouble(number2);
+                    convertsR obj = new convertsR();
+                    obj.carregarValor();
+                }if (valorDolla != valueD){
+                    Double results = valorDolla * valorReais;
+                    editTextReais.setText(String.valueOf(results));
+
+                }/*if (valorReais == valueR){
                     editTextDolar.setText(String.valueOf(convD));
-                }if (valorReais != 1){
-                    Double resulR = convD * valorReais;
-                    editTextDolar.setText(String.valueOf(resulR));
+                }if (valorReais != valueR){
+                    Double resultR = convD * valorReais;
+                    editTextDolar.setText(String.valueOf(resultR));
+                }*/else {
+                    validarCampos();
                 }
 
             }
@@ -90,16 +89,44 @@ public class TelaConversor extends AppCompatActivity {
 
     }
     
+        public class convertsR {
 
-        public void carregarValor(String dollarsV){
-            EditText valorD = (EditText)findViewById(R.id.editTextReais);
-            valorD.setText(dollarsV);
+            public void carregarValor(String dollarsV){
+                EditText valorD = (EditText)findViewById(R.id.editTextReais);
+                valorD.setText(dollarsV);
 
-            /*
-            String dollarD = String.valueOf(1);
-            EditText numD = (EditText)findViewById(R.id.editTextDolar);
-            numD.setText(dollarD);*/
+                /*
+                String dollarD = String.valueOf(1);
+                EditText numD = (EditText)findViewById(R.id.editTextDolar);
+                numD.setText(dollarD);*/
+            }
+
+            public void carregarValor() {
+            }
+
         }
+
+        public Boolean validarCampos(){
+            String textoDolar = editTextDolar.getText().toString();
+            String textoReais = editTextReais.getText().toString();
+
+            if (!textoDolar.isEmpty()){
+                if (!textoReais.isEmpty()){
+                    return true;
+                }else {
+                    Toast.makeText(TelaConversor.this,
+                            "Dolar não foi preenchido!",
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }else {
+                    Toast.makeText(TelaConversor.this,
+                            "Dolar não foi preenchido!",
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+            }
+        }
+
 
 
     class MyTask extends AsyncTask<String, Void, String> {
@@ -168,7 +195,10 @@ public class TelaConversor extends AppCompatActivity {
             }
 
 
-                carregarValor(formatD.format(valorMoeda));
+                convertsR obj = new convertsR();
+                obj.carregarValor(formatD.format(valorMoeda));
+
+                //carregarValor(formatD.format(valorMoeda));
 
 
             //carregarData("Última atualização: " + date);

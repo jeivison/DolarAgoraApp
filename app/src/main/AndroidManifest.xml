@@ -13,11 +13,14 @@
         android:theme="@style/Theme.DolarHoje">
         <activity android:name=".activity.TelaConversor"></activity>
         <activity android:name=".activity.TelaDolar" />
-        <activity android:name=".activity.TelaLogin" />
-        <activity android:name=".activity.TelaCadastro" />
+        <activity android:name=".activity.TelaLogin"
+            />
+        <activity android:name=".activity.TelaCadastro"
+            />
         <activity
             android:name=".activity.telaCadastro"
             android:label="@string/title_activity_tela_cadastro"
+
             android:theme="@style/Theme.DolarHoje.NoActionBar" />
         <activity
             android:name=".MainActivity"
