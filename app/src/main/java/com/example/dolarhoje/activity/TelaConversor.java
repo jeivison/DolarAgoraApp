@@ -40,19 +40,28 @@ public class TelaConversor extends AppCompatActivity {
         String urlApi = "https://economia.awesomeapi.com.br/all/USD-BRL";
         task.execute(urlApi);
 
+
+        addValuesD();
+
+    }
+
+    private void addValuesD(){
         editTextDolar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
 
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                /*
                 String number1 = editTextDolar.getText().toString();
                 Double valorDolla = Double.parseDouble(number1);
                 String number2 = editTextReais.getText().toString();
                 Double valorReais = Double.parseDouble(number2);
+
 
                 Double convD = 0.18;
                 int valueD = 1;
@@ -75,9 +84,9 @@ public class TelaConversor extends AppCompatActivity {
                 }if (valorReais != valueR){
                     Double resultR = convD * valorReais;
                     editTextDolar.setText(String.valueOf(resultR));
-                }*/else {
+                }else {
                     validarCampos();
-                }
+                }*/
 
             }
 
@@ -86,8 +95,8 @@ public class TelaConversor extends AppCompatActivity {
 
             }
         });
-
     }
+
     
         public class convertsR {
 
@@ -178,6 +187,7 @@ public class TelaConversor extends AppCompatActivity {
             //String simbolo = null;
             String date = null;
             Double valorMoeda = null;
+
 
 
             DecimalFormat formatD = new DecimalFormat("#.##");
