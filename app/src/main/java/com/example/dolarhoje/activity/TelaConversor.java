@@ -46,7 +46,7 @@ public class TelaConversor extends AppCompatActivity {
     }
 
     private void addValuesD(){
-        editTextDolar.addTextChangedListener(new TextWatcher() {
+        editTextReais.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -56,26 +56,19 @@ public class TelaConversor extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                /*
                 String number1 = editTextDolar.getText().toString();
                 Double valorDolla = Double.parseDouble(number1);
                 String number2 = editTextReais.getText().toString();
                 Double valorReais = Double.parseDouble(number2);
 
+                //int value = 1;
+                //editTextDolar.setText(String.valueOf(value));
 
-                Double convD = 0.18;
-                int valueD = 1;
-                int valueR = 1;
-
-                //Double resul = valorDolla * valorReais;
-
-                //editTextReais.setText(String.valueOf(resul));
-
-                if (valorDolla == valueD){
-                    //Double.parseDouble(number2);
+                if (valorDolla == 1){
                     convertsR obj = new convertsR();
                     obj.carregarValor();
-                }if (valorDolla != valueD){
+
+                }if (valorDolla != 1){
                     Double results = valorDolla * valorReais;
                     editTextReais.setText(String.valueOf(results));
 
