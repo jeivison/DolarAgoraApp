@@ -5,10 +5,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.dolarhoje.R;
 
 import org.json.JSONException;
@@ -44,7 +44,8 @@ public class TelaDolar extends AppCompatActivity {
         String urlApi = "https://economia.awesomeapi.com.br/all/USD-BRL";
         task.execute(urlApi);
 
-/*
+
+        /*
         buttonConverter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +137,7 @@ public class TelaDolar extends AppCompatActivity {
 
 
             //editUsd.setText(mCode);
-            //editUsd.setText(simbolo+" "+valorMoeda);
+           // editUsd.setText(simbolo+" "+valorMoeda);
             //textDate.setText("Última atualização: " + date);
             carregarTexto("R$" + " " + formatD.format(valorMoeda));
             carregarData("Última atualização: " + date);

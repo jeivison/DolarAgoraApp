@@ -1,18 +1,13 @@
 package com.example.dolarhoje;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.dolarhoje.activity.TelaCadastro;
 import com.example.dolarhoje.activity.TelaLogin;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
 
 public class MainActivity extends IntroActivity {
 
@@ -21,8 +16,6 @@ public class MainActivity extends IntroActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-
 
         setButtonBackVisible(false);
         setButtonNextVisible(false);
@@ -39,24 +32,6 @@ public class MainActivity extends IntroActivity {
                 .canGoForward(false)
                 .build());
 
-        /*
-        addSlide(new SimpleSlide.Builder()
-                .title("")
-                .description("descricao")
-                //.image(R.drawable.)
-                .background(android.R.color.white)
-                .build()
-
-        );
-
-        addSlide(new SimpleSlide.Builder()
-                .title("")
-                .description("descricao")
-                //.image(R.drawable.)
-                .background(android.R.color.white)
-                .build()
-
-        );*/
     }
 
     public void btCadastrar(View view){
